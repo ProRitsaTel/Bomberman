@@ -5,6 +5,8 @@ using UnityEngine;
 public class BombSpawner : MonoBehaviour
 {
 	public GameObject bomb;
+
+	public int firePower = 1;
 	int numberOfBombs = 1;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,8 @@ public class BombSpawner : MonoBehaviour
         if(Input.GetButtonDown("Jump") && numberOfBombs >= 1)
         {
         	Vector2 spawnPos = new Vector2(Mathf.Round(transform.position.x),Mathf.Round(transform.position.y));
-        	Instantiate(bomb, spawnPos, Quaternion.identity);
+        	var newBomb = Instantiate(bomb, spawnPos, Quaternion.identity) as GameObject;
+        	newBomb.GetComponent<Bomb>().firePower = firePower;
         	numberOfBombs--;
         	Invoke("AddBomb", 1);
         }
