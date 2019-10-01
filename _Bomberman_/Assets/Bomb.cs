@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    	//Задержка до взрыва
         Invoke("Exploide", fuse);
     }
 
@@ -18,22 +19,30 @@ public class Bomb : MonoBehaviour
         Debug.Log("Boom: " + firePower);
         //Создание центра огня
         Instantiate(fire, transform.position, Quaternion.identity);
-        //Создание rest огня 
+        
+        //Создание остальной длинны огня 
         for(int i = 0; i < firePower; i++)
         {
-        	SpawnFire(i + 1);
+        	SpawnFire(Vector3(i + 1, 0, 0));
+        	SpawnFire(Vector3(i - 1, 0, 0));
+        	SpawnFire(Vector3(0, i + 1, 0));
+        	SpawnFire(Vector3(0, i - 1, 0));
         }
+        //Уничтожение огня
         Destroy(gameObject);
     }
-
-    private void SpawnFire(int offset)
+    //Функия для спавна огня
+    private void SpawnFire(Vector offset)
     {
-    	Instantiate(fire, transform.position + new Vector3(offset,0,0), Quaternion.identity);
-    	Instantiate(fire, transform.position - new Vector3(offset,0,0), Quaternion.identity);
-    	Instantiate(fire, transform.position + new Vector3(0,offset,0), Quaternion.identity);
-    	Instantiate(fire, transform.position - new Vector3(0,offset,0), Quaternion.identity);
+    	if(true)
+    	{       
+    			Instantiate(fire, transform.position + offset, Quaternion.identity);
+    	else
+    	{
+    		return ;
+    	}	
     }
-
+    //Добавление бомбе структуры
     public void OnTriggerExit2D(Collider2D collision)
     {
     	GetComponent<BoxCollider2D>().isTrigger = false;

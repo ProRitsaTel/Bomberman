@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +15,7 @@ public class Fire : MonoBehaviour
    {
    		transform.Rotate(0,0,-45);
    }
+   //При соприкосновении с огнём уничтожается любой предмет(игрок,ящики)
    public void OnTriggerEnter2D(Collider2D collision)
    {
    		Destroy(collision.gameObject);
