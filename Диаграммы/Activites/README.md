@@ -16,5 +16,6 @@
   
 ### 3. Выход<a name="3"></a>
 При нажатии кнопки "Выход" произойдёт выход из игры.
+
 ![Activity Diagram3](https://user-images.githubusercontent.com/49131712/66786228-5822a680-eee8-11e9-85c5-26bbe6094e03.jpg)
 
