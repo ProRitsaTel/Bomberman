@@ -102,7 +102,7 @@
 ![Диаграммы последовательности](https://github.com/ProRitsaTel/Bomberman/blob/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/Sequences/README.md)
 
 ### 4. Диаграмма состояний<a name="4"></a>
-[Диагрымма состояний](https://github.com/ProRitsaTel/Bomberman/tree/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/State)
+[Диаграммы состояний](https://github.com/ProRitsaTel/Bomberman/tree/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/State)
 
 ### 5. Диаграмма классов<a name="5"></a>
 ![Class Diagram1](https://user-images.githubusercontent.com/49131712/67728641-f7728e00-f9fe-11e9-823c-4b81839540b0.jpg)
