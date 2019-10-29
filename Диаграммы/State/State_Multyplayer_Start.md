@@ -1,1 +1,1 @@
-![State Machine Diagram1](https://user-images.githubusercontent.com/49131712/67727296-f25f1000-f9f9-11e9-9a5f-75bdfb31637e.jpg)
+![State Machine Diagram 2 (Settings) ](https://user-images.githubusercontent.com/49131712/67761151-c4a6b500-fa53-11e9-81cc-6149c5d8867e.jpg)
