@@ -11,6 +11,9 @@
 1.2.3 [Выход из игры](#1.2.3)<br>
 2. [Диаграмма активности](#2)
 3. [Диаграмма последовательности](#3)
+4. [Диаграмма состояний](#4)
+5. [Диаграмма классов](#5)
+6. [Диаграмма развертывания](#6)
 
 ### 1. Диаграмма прецедентов<a name="1"></a>
 Диаграмма прецедентов представляет собой следующую диаграмму: 
@@ -94,7 +97,17 @@
 
 ### 2. Диаграмма активности<a name="2"></a>
  ![Диаграммы агтивности](https://github.com/ProRitsaTel/Bomberman/blob/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/Activites/README.md)
+ 
 ### 3. Диаграмма последовательности<a name="3"></a>
 ![Диаграммы последовательности](https://github.com/ProRitsaTel/Bomberman/blob/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/Sequences/README.md)
 
+### 4. Диаграмма состояний<a name="4"></a>
+[Диагрымма состояний](https://github.com/ProRitsaTel/Bomberman/tree/master/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B/State)
+
+### 5. Диаграмма классов<a name="5"></a>
+![Class Diagram1](https://user-images.githubusercontent.com/49131712/67728641-f7728e00-f9fe-11e9-823c-4b81839540b0.jpg)
+
+### 6. Диаграмма развертывания<a name="6"></a>
+
+![Deployment Diagram](https://user-images.githubusercontent.com/49131712/67725428-65b15380-f9f3-11e9-85c0-5b034f8685ef.jpg)
 
