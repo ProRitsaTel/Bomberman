@@ -10,14 +10,14 @@
 
 ### 1. Старт игры<a name="1"></a>
 
-![State Machine Diagram1](https://user-images.githubusercontent.com/49131712/67727296-f25f1000-f9f9-11e9-9a5f-75bdfb31637e.jpg)
+![State Machine Diagram 2 (Settings) ](https://user-images.githubusercontent.com/49131712/67761151-c4a6b500-fa53-11e9-81cc-6149c5d8867e.jpg)
 
 ### 2. Настройки<a name="2"></a>
 
-![State Machine Diagram 2 (Settings) ](https://user-images.githubusercontent.com/49131712/67727298-f68b2d80-f9f9-11e9-84ea-ecfb92a7ca6a.jpg)
+![State Machine Diagram1](https://user-images.githubusercontent.com/49131712/67760940-58c44c80-fa53-11e9-9bd6-f807d61190bc.jpg)
   
 ### 3. Выход<a name="3"></a>
 
-![State Machine Diagram3(Exit)](https://user-images.githubusercontent.com/49131712/67727293-f0954c80-f9f9-11e9-84c5-4371fcb70927.jpg)
+![State Machine Diagram3(Exit)](https://user-images.githubusercontent.com/49131712/67760946-5a8e1000-fa53-11e9-9fb3-85b86b7a61d8.jpg)
 
 
