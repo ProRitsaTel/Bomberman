@@ -12,6 +12,7 @@ public class Bomberman : MonoBehaviour
 	private bool ButtonDetonate;
 	
 	private bool CanMove;
+	private bool InsideBomd;
 
 	private int BombsAllowed;
 	private int FireLength;
@@ -37,6 +38,7 @@ public class Bomberman : MonoBehaviour
     void Start()
     {
     	BombsAllowed = 2;
+    	FireLength = 5;
     }
     // Update is called once per frame
     void Update()
@@ -81,6 +83,7 @@ public class Bomberman : MonoBehaviour
     void HandleSensor()
     {
     	Sensor.transform.localPosition = new Vector2(0, 0);
+    	InsideBomd = Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BombLayer);
     	switch(Diraction)
     	{
     		case 2:
@@ -98,7 +101,7 @@ public class Bomberman : MonoBehaviour
     	}
     	
     	CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, StoneLayer);
-    	if(CanMove)
+    	if(CanMove && !InsideBomd)
     	   CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BombLayer);
     }
 
