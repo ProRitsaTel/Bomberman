@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-	public GameObject Fire;
+	public GameObject FireMid;
+	public GameObject FireHorizontal;
+	public GameObject FireHorizontalRigth;
+	public GameObject FireHorizontalLeft;
+	public GameObject FireVertical;
+	public GameObject FireVerticalDown;
+	public GameObject FireVerticalUp;
+	
 	public float Delay;
 	public float Counter;
 	public LayerMask StoneLayer;
@@ -37,6 +44,41 @@ public class Bomb : MonoBehaviour
     }
 
     void Blow()
+    {
+    	CalculateFireDiraction();
+    	Instantiate(FireMid,transform.position,transform.rotation);
+    	//Left
+    	if(CellsToBlowLeft.Count > 0)
+     	    for(int i = 0; i < CellsToBlowLeft.Count; i++)
+    		{
+    			if(i == CellsToBlowLeft.Count - 1) Instantiate(FireHorizontalLeft,CellsToBlowLeft[i],transform.rotation);
+    			else Instantiate(FireHorizontal,CellsToBlowLeft[i],transform.rotation);
+    		}  		
+   		//Rigth
+    	if(CellsToBlowRight.Count > 0)    	
+    		for(int i = 0; i < CellsToBlowRight.Count; i++)
+    		{
+    			if(i == CellsToBlowRight.Count - 1) Instantiate(FireHorizontalRigth,CellsToBlowRight[i],transform.rotation);
+    			else Instantiate(FireHorizontal,CellsToBlowRight[i],transform.rotation);
+    		}
+    	//Up
+    	if(CellsToBlowUp.Count > 0)    	
+    		for(int i = 0; i < CellsToBlowUp.Count; i++)
+    		{
+    			if(i == CellsToBlowUp.Count - 1) Instantiate(FireVerticalUp,CellsToBlowUp[i],transform.rotation);
+    			else Instantiate(FireVertical,CellsToBlowUp[i],transform.rotation);
+    		}
+    	//Down  	
+    	if(CellsToBlowDown.Count > 0)    	
+    		for(int i = 0; i < CellsToBlowDown.Count; i++)
+    		{
+    			if(i == CellsToBlowDown.Count - 1) Instantiate(FireVerticalDown,CellsToBlowDown[i],transform.rotation);
+    			else Instantiate(FireVertical,CellsToBlowDown[i],transform.rotation);
+    		}  	  		
+   		Destroy(gameObject);
+
+    }
+    void CalculateFireDiraction()
     {
     	FireLength = FindObjectOfType<Bomberman>().GetFireLength();
     	//LEFT
@@ -95,7 +137,6 @@ public class Bomb : MonoBehaviour
     		}
     		CellsToBlowDown.Add(new Vector2(transform.position.x,transform.position.y - i));
     	}
-
     }
     void OnDrawGizmos()
     {   	

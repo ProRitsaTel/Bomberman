@@ -27,6 +27,7 @@ public class Bomberman : MonoBehaviour
 	
 	public LayerMask StoneLayer;
 	public LayerMask BombLayer;
+	public LayerMask BrickLayer;
 
 	public GameObject Bomb;
 
@@ -100,7 +101,7 @@ public class Bomberman : MonoBehaviour
     			break;   		    	    				
     	}
     	
-    	CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, StoneLayer);
+    	CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, StoneLayer) && !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BrickLayer);   	
     	if(CanMove && !InsideBomd)
     	   CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BombLayer);
     }
@@ -122,8 +123,8 @@ public class Bomberman : MonoBehaviour
     	ButtonUp = !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.UpArrow); 
     	ButtonDown = !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow); 
 
-    	ButtonBomb = Input.GetKey(KeyCode.Z);
-    	ButtonDetonate = Input.GetKey(KeyCode.Y);
+    	ButtonBomb = Input.GetKeyDown(KeyCode.Z);
+    	ButtonDetonate = Input.GetKeyDown(KeyCode.Y);
     }
 
     public void AddBomb()
