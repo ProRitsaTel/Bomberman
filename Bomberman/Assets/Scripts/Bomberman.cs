@@ -12,7 +12,10 @@ public class Bomberman : MonoBehaviour
 	private bool ButtonDetonate;
 	
 	private bool CanMove;
+	private bool isMoving;
 	private bool InsideBomd;
+	private bool InsideFire;
+
 
 	private int BombsAllowed;
 	private int FireLength;
@@ -28,6 +31,8 @@ public class Bomberman : MonoBehaviour
 	public LayerMask StoneLayer;
 	public LayerMask BombLayer;
 	public LayerMask BrickLayer;
+	public LayerMask FireLayer;
+
 
 	public GameObject Bomb;
 
@@ -49,11 +54,12 @@ public class Bomberman : MonoBehaviour
        HandleSensor();
        HandleBombs();
        Move();
+       Animate();
     }
 
     private void HandleBombs()
     {
-    	if(ButtonBomb && GameObject.FindGameObjectsWithTag("Bomb").Length < BombsAllowed)
+    	if(ButtonBomb && GameObject.FindGameObjectsWithTag("Bomb").Length < BombsAllowed && !InsideBomd && !InsideFire)
     	{
     		Instantiate(Bomb, new Vector2(Mathf.Round(transform.position.x),Mathf.Round(transform.position.y)), transform.rotation); 
     	}
@@ -61,7 +67,13 @@ public class Bomberman : MonoBehaviour
 
     private void Move()
     {
-    	if(!CanMove) return;
+    	if(!CanMove) 
+    	{
+    		isMoving = false;
+    		return;
+    	}
+
+    	isMoving = true; 
 
     	switch(Diraction)
     	{
@@ -69,14 +81,22 @@ public class Bomberman : MonoBehaviour
     			transform.position = new Vector2(Mathf.Round(transform.position.x), transform.position.y - MoveSpeed * Time.deltaTime);
     			break;
     		case 4:
-    			transform.position = new Vector2(transform.position.x - MoveSpeed * Time.deltaTime, Mathf.Round(transform.position.y));	
+    			transform.position = new Vector2(transform.position.x - MoveSpeed * Time.deltaTime, Mathf.Round(transform.position.y));
+  				GetComponent<SpriteRenderer>().flipX = false;
     			break;
+    			
     		case 6:
+    			
     			transform.position = new Vector2(transform.position.x + MoveSpeed * Time.deltaTime, Mathf.Round(transform.position.y));	
+    			GetComponent<SpriteRenderer>().flipX = true;
     			break;
     		case 8:
     			transform.position = new Vector2(Mathf.Round(transform.position.x), transform.position.y + MoveSpeed * Time.deltaTime);	
-    			break;   		    	    				
+    			transform.localScale = new Vector3(1,1,-1);
+    			break;   
+    		case 5:
+    			isMoving = false;
+    			break;		    	    				
     	}
 
     }
@@ -85,6 +105,7 @@ public class Bomberman : MonoBehaviour
     {
     	Sensor.transform.localPosition = new Vector2(0, 0);
     	InsideBomd = Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BombLayer);
+    	InsideFire = Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, FireLayer);
     	switch(Diraction)
     	{
     		case 2:
@@ -138,5 +159,12 @@ public class Bomberman : MonoBehaviour
     public int GetFireLength()
     {
     	return FireLength;
+    }
+
+    public void Animate()
+    {
+    	var animator = GetComponent<Animator>();
+    	animator.SetInteger("Diraction",Diraction);
+    	animator.SetBool("Moving",isMoving); 
     }
 }

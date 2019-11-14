@@ -14,6 +14,7 @@ public class Bomb : MonoBehaviour
 	
 	public float Delay;
 	public float Counter;
+	
 	public LayerMask StoneLayer;
 	public LayerMask BrickLayer;
 
@@ -41,6 +42,14 @@ public class Bomb : MonoBehaviour
         {
         	Blow();
         }
+    }
+
+     public void OnTriggerEnter2D(Collider2D other)
+    {
+    	if(other.gameObject.tag == "Fire")
+    	{
+    		Blow();
+    	}
     }
 
     void Blow()
