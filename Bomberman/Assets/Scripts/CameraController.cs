@@ -22,12 +22,14 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	  var Bomberman = FindObjectOfType<Bomberman>();
+    	  if(Bomberman == null) return;
           float cameraHalfHeigth = GetComponent<Camera>().orthographicSize;
           float cameraHalfWidth = cameraHalfHeigth * ((float)Screen.width/ Screen.height);
 
-          var Bomberman = FindObjectOfType<Bomberman>().transform.position;
-          var x = Bomberman.x;
-          var y = Bomberman.y;
+          var BombermanPosition = Bomberman.transform.position;
+          var x = BombermanPosition.x;
+          var y = BombermanPosition.y;
 
           x = Mathf.Clamp(x, field.MinX + cameraHalfWidth, field.MaxX - cameraHalfWidth);
           y = Mathf.Clamp(y, field.MinY + cameraHalfHeigth, field.MaxY - cameraHalfHeigth);

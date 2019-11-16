@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5726906431364607854}
   - component: {fileID: 5726906431364607853}
   - component: {fileID: 5726906431364607852}
+  - component: {fileID: -7922409684471210532}
   m_Layer: 11
   m_Name: FireHorizontalLeft
   m_TagString: Fire
@@ -143,3 +144,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BrickDeathEffect: {fileID: 1872381389376728671, guid: 60bd3dbfb2fcaf447b1ab2117f96a204,
     type: 3}
+--- !u!114 &-7922409684471210532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726906431364607849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01543c6caeb6bbc4e9727f63d70c6212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: 1

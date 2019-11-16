@@ -18,7 +18,7 @@ public class PathFinder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PathToTarget = GetPath(Target.transform.position);
+        //PathToTarget = GetPath(Target.transform.position);
     }
     public List<Vector2> GetPath(Vector2 target)
     {

@@ -65,6 +65,7 @@ public class Bomberman : MonoBehaviour
        Animate();
     }
 
+
     public void OnTriggerEnter2D(Collider2D other)
     {
     	if(other.gameObject.tag == "PowerUp")
@@ -96,6 +97,17 @@ public class Bomberman : MonoBehaviour
     		}
     		Destroy(other.gameObject);    		
     	}
+    }
+
+    public void Damage(int source)
+    {
+    	if(source == 2) Die();
+    	else if(source == 1 && !NoclipFire) Die();
+    }
+
+    void Die()
+    {
+    	Destroy(gameObject);
     }
     void GetDetonator()
     {
