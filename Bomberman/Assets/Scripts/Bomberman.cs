@@ -137,7 +137,7 @@ public class Bomberman : MonoBehaviour
     	{
        		var bombs = FindObjectsOfType<Bomb>();
     		foreach(var bomb in bombs)
-    		{
+    		{	
     			bomb.Blow();
     		}
 
