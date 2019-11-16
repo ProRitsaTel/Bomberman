@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class Bomb : MonoBehaviour
 	
 	public float Delay;
 	public float Counter;
-	
+
 	public LayerMask StoneLayer;
 	public LayerMask BrickLayer;
 
@@ -24,9 +24,15 @@ public class Bomb : MonoBehaviour
 	public List<Vector2> CellsToBlowDown;
 
 	private int FireLength;
+	private bool CanTick;
+
+	private Bomberman bomberman;
     // Start is called before the first frame update
     void Start()
     {
+    	bomberman = FindObjectOfType<Bomberman>();
+    	if(bomberman.CheakDetonator()) CanTick = true;
+    	else CanTick = false;
         Counter = Delay;
         CellsToBlowRight = new List<Vector2>();
         CellsToBlowLeft = new List<Vector2>();
@@ -37,10 +43,13 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Counter > 0) Counter -= Time.deltaTime;
+        if(Counter > 0 )
+		{
+			if(!CanTick)Counter -= Time.deltaTime;
+		}        
         else
         {
-        	Blow();
+        	Blow();      	
         }
     }
 
@@ -48,11 +57,11 @@ public class Bomb : MonoBehaviour
     {
     	if(other.gameObject.tag == "Fire")
     	{
-    		Blow();
+    		Blow();   		
     	}
     }
 
-    void Blow()
+    public  void Blow()
     {
     	CalculateFireDiraction();
     	Instantiate(FireMid,transform.position,transform.rotation);
@@ -89,7 +98,7 @@ public class Bomb : MonoBehaviour
     }
     void CalculateFireDiraction()
     {
-    	FireLength = FindObjectOfType<Bomberman>().GetFireLength();
+    	FireLength = bomberman.GetFireLength();
     	//LEFT
     	for(int i = 1; i <= FireLength; i++)
     	{
@@ -146,6 +155,7 @@ public class Bomb : MonoBehaviour
     		}
     		CellsToBlowDown.Add(new Vector2(transform.position.x,transform.position.y - i));
     	}
+
     }
     void OnDrawGizmos()
     {   	

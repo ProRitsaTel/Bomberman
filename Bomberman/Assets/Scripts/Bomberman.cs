@@ -11,14 +11,22 @@ public class Bomberman : MonoBehaviour
 	private bool ButtonBomb;
 	private bool ButtonDetonate;
 	
+	
+	private int BombsAllowed;
+	private int FireLength;
+	private int SpeedBoosts;
+	private bool NoclipWalls;
+	private bool NoclipBomds;
+	private bool NoclipFire;
+	private bool HasDetonator;
+
 	private bool CanMove;
 	private bool isMoving;
 	private bool InsideBomd;
 	private bool InsideFire;
 
 
-	private int BombsAllowed;
-	private int FireLength;
+	
 
 	public int Diraction; // 8-вверх 6 вправо 2 -вниз 4-влево 
 
@@ -43,8 +51,8 @@ public class Bomberman : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    	BombsAllowed = 2;
-    	FireLength = 5;
+    	BombsAllowed = 1;
+    	FireLength = 1;
     }
     // Update is called once per frame
     void Update()
@@ -57,11 +65,82 @@ public class Bomberman : MonoBehaviour
        Animate();
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+    	if(other.gameObject.tag == "PowerUp")
+    	{
+    		switch(other.GetComponent<PowerUp>().Type)
+    		{
+    			case 0:
+    				GetExtraBomb();
+    			    break;
+    			case 1:
+    				GetExtraFire();
+    			    break;
+    			case 2:  
+    				GetExtraSpeed();
+    			    break;
+    			case 3:  
+    				GetNoclipWalls();
+    			    break; 
+    			case 4:  
+    				GetNoclipFire();
+    			    break; 
+    			case 5:  
+    				GetNoclipBombs();
+    			    break;
+    			case 6:  
+    				GetDetonator();
+    			    break;    
+
+    		}
+    		Destroy(other.gameObject);    		
+    	}
+    }
+    void GetDetonator()
+    {
+		HasDetonator = true;
+    } 
+    void GetNoclipBombs()
+    {
+		NoclipBomds = true;
+    } 
+    void GetNoclipFire()
+    {
+		NoclipFire = true;
+    } 
+   	void GetNoclipWalls()
+    {
+		NoclipWalls = true;
+    } 
+
+    void GetExtraSpeed()
+    {
+		MoveSpeed = MoveSpeed + 0.5f;
+    }
+    void GetExtraBomb()
+    {
+		BombsAllowed++;
+    }
+    void GetExtraFire()
+    {
+		FireLength++;
+    }
+
     private void HandleBombs()
     {
     	if(ButtonBomb && GameObject.FindGameObjectsWithTag("Bomb").Length < BombsAllowed && !InsideBomd && !InsideFire)
     	{
     		Instantiate(Bomb, new Vector2(Mathf.Round(transform.position.x),Mathf.Round(transform.position.y)), transform.rotation); 
+    	}
+    	if(ButtonDetonate && HasDetonator)
+    	{
+       		var bombs = FindObjectsOfType<Bomb>();
+    		foreach(var bomb in bombs)
+    		{
+    			bomb.Blow();
+    		}
+
     	}
     }
 
@@ -122,9 +201,18 @@ public class Bomberman : MonoBehaviour
     			break;   		    	    				
     	}
     	
-    	CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, StoneLayer) && !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BrickLayer);   	
+    	CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, StoneLayer);
+        if(CanMove)
+        {
+        	if(!NoclipWalls)
+    	 	CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BrickLayer);   
+        }
+    		
     	if(CanMove && !InsideBomd)
+    	{
+    		if(!NoclipBomds)
     	   CanMove = !Physics2D.OverlapBox(Sensor.position, new Vector2(SensorSize, SensorSize), 0, BombLayer);
+    	}
     }
 
     void GetDiraction()
@@ -134,6 +222,12 @@ public class Bomberman : MonoBehaviour
     	if(ButtonRight) Diraction = 6;
     	if(ButtonUp) Diraction = 8;
     	if(ButtonDown) Diraction = 2;
+    }
+
+    public bool CheakDetonator()
+
+    {
+    	return HasDetonator; 
     }
 
 
