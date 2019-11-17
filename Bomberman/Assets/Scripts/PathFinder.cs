@@ -6,8 +6,9 @@ using UnityEngine;
 public class PathFinder : MonoBehaviour
 {
 	public List<Vector2> PathToTarget;
-	List<Node> CheckedNodes = new List<Node>();
-	List<Node> WaitingNodes = new List<Node>();
+	public List<Node> CheckedNodes = new List<Node>();
+	public List<Node> FreeNodes = new List<Node>();
+	public	List<Node> WaitingNodes = new List<Node>();
 	public GameObject Target;
 	public LayerMask SolidLayer;
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class PathFinder : MonoBehaviour
 		WaitingNodes = new List<Node>();
 
 		Vector2 StartPosition = new Vector2(Mathf.Round(transform.position.x),Mathf.Round(transform.position.y));
-		Vector2 TargerPosition = new Vector2(Mathf.Round(Target.transform.position.x),Mathf.Round(Target.transform.position.y));
+		Vector2 TargerPosition = new Vector2(Mathf.Round(target.x),Mathf.Round(target.y));
 
 		if(StartPosition == TargerPosition) return PathToTarget;
 
@@ -48,6 +49,7 @@ public class PathFinder : MonoBehaviour
 				WaitingNodes.Remove(nodeToCheck);
 				CheckedNodes.Add(nodeToCheck);
 
+
 			} else if(!walkable)
 			{
 				WaitingNodes.Remove(nodeToCheck);
@@ -60,6 +62,7 @@ public class PathFinder : MonoBehaviour
 
 			}
 		}
+		
 
     	return PathToTarget;
     }
@@ -81,9 +84,11 @@ public class PathFinder : MonoBehaviour
     {
     	var Neighbours = new List<Node>();
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x-1,node.Position.y),node.TargerPosition,node));
+    	FreeNodes = Neighbours;
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x+1,node.Position.y),node.TargerPosition,node));
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x,node.Position.y-1),node.TargerPosition,node));
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x,node.Position.y+1),node.TargerPosition,node));
+
     	return Neighbours;
     }
 

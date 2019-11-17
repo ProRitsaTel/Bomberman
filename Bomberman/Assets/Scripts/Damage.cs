@@ -15,5 +15,9 @@ public class Damage : MonoBehaviour
     	{	
     		other.GetComponent<Bomberman>().Damage(source);
     	}
+    	if(other.gameObject.tag == "Enemy")
+    	{	
+    		other.GetComponent<Enemy>().Damage(source);
+    	}
     }
 }

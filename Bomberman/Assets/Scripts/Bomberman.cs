@@ -43,6 +43,7 @@ public class Bomberman : MonoBehaviour
 
 
 	public GameObject Bomb;
+	public GameObject DeathEffect;
 
 
 	
@@ -107,6 +108,7 @@ public class Bomberman : MonoBehaviour
 
     void Die()
     {
+    	Instantiate(DeathEffect,transform.position,transform.rotation);
     	Destroy(gameObject);
     }
     void GetDetonator()
@@ -144,6 +146,11 @@ public class Bomberman : MonoBehaviour
     	if(ButtonBomb && GameObject.FindGameObjectsWithTag("Bomb").Length < BombsAllowed && !InsideBomd && !InsideFire)
     	{
     		Instantiate(Bomb, new Vector2(Mathf.Round(transform.position.x),Mathf.Round(transform.position.y)), transform.rotation); 
+    		var enemies = FindObjectsOfType<Enemy>();  
+    		foreach( var item in enemies)
+    		{
+    			item.ReCalculatePath();
+    		} 		
     	}
     	if(ButtonDetonate && HasDetonator)
     	{
