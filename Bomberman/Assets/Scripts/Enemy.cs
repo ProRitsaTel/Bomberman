@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
 	private bool SeeBomberman;
 	private float seconds;
 	public LayerMask SolidLayer;
+	public float i =2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,15 +38,11 @@ public class Enemy : MonoBehaviour
          	{	
          		SeeBomberman = false;
          		if(!SeeBomberman )
-         		{         			         	
-         				         				
-         					var r = Random.Range(0,PathFinder.FreeNodes.Count);         											
-	         				RandomPath = PathFinder.GetPath(PathFinder.FreeNodes[r].Position);	         		
-		         			CurrentPath = RandomPath;
-		         			print(CurrentPath.Count);
-		         			seconds -= Time.deltaTime;		         				         				
-		         	
-
+         		{         		         			        			
+         			var r = Random.Range(0,PathFinder.FreeNodes.Count);         											
+	         		RandomPath = PathFinder.GetPath(PathFinder.FreeNodes[r].Position);	         		
+		         	CurrentPath = RandomPath;
+		         	print(CurrentPath.Count);		         		         			         			         				         						         	
          		}
          	}
          	else
