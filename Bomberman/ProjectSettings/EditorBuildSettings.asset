@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/qwe.unity
-    guid: 5c1b910ed4e46da4995aa31dc2d55d93
-  - enabled: 1
     path: Assets/MainMenu.unity
     guid: e065058da91a4d147a2bd8036cd9c777
+  - enabled: 1
+    path: Assets/qwe.unity
+    guid: 5c1b910ed4e46da4995aa31dc2d55d93
   - enabled: 1
     path: Assets/Settings.unity
     guid: 87d7d7989604bb1478475354d7500c21

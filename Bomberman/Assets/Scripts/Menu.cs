@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-
+ 
     Sounds sounds = new Sounds();
     // Start is called before the first frame update
     public void StartGame()
     {
         SceneManager.LoadScene("qwe");
         AudioListener.volume = sounds.Value();
+        
     }
     public void SettingsGame()
     {
