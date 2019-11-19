@@ -257,8 +257,8 @@ public class Bomberman : MonoBehaviour
     	ButtonUp = !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.UpArrow); 
     	ButtonDown = !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow); 
 
-    	ButtonBomb = Input.GetKeyDown(KeyCode.Z);
-    	ButtonDetonate = Input.GetKeyDown(KeyCode.Y);
+    	ButtonBomb = Input.GetKeyDown(KeyCode.Space);
+    	ButtonDetonate = Input.GetKeyDown(KeyCode.Z);
     }
 
     public void AddBomb()

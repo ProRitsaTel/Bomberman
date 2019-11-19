@@ -63,7 +63,7 @@ public class PathFinder : MonoBehaviour
 			}
 		}
 		
-		FreeNodes = CheckedNodes;
+
     	return PathToTarget;
     }
 
@@ -84,7 +84,7 @@ public class PathFinder : MonoBehaviour
     {
     	var Neighbours = new List<Node>();
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x-1,node.Position.y),node.TargerPosition,node));
-
+    	FreeNodes = Neighbours;
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x+1,node.Position.y),node.TargerPosition,node));
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x,node.Position.y-1),node.TargerPosition,node));
     	Neighbours.Add(new Node(node.G+1,new Vector2(node.Position.x,node.Position.y+1),node.TargerPosition,node));
