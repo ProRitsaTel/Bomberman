@@ -27,6 +27,8 @@ public class Bomb : MonoBehaviour
 	private bool CanTick;
 
 	private Bomberman bomberman;
+
+    public AudioSource Audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class Bomb : MonoBehaviour
         CellsToBlowRight = new List<Vector2>();
         CellsToBlowLeft = new List<Vector2>();
         CellsToBlowUp = new List<Vector2>();
-        CellsToBlowDown = new List<Vector2>();
+        CellsToBlowDown = new List<Vector2>();       
     }
 
     // Update is called once per frame

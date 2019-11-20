@@ -9,6 +9,7 @@ public class PauseAndRestart : MonoBehaviour
     // Start is called before the first frame update
    public bool pause = true;
    public GameObject panel;
+   public GameObject Bomberman;
    Sounds sounds = new Sounds();
    public void pause1()
    {
@@ -26,9 +27,10 @@ public class PauseAndRestart : MonoBehaviour
    		}
   
    }
-    	public void MainMenu()
+    public void MainMenu()
     {
     	Time.timeScale = 1;
+    	pause = true;
         SceneManager.LoadScene("MainMenu");
         AudioListener.volume = sounds.Value();
     }
@@ -38,6 +40,13 @@ public class PauseAndRestart : MonoBehaviour
         SceneManager.LoadScene("qwe");
         AudioListener.volume = sounds.Value();
         
+    }
+    public void Update()
+    {
+    	if(Bomberman == null )
+    	{
+    		panel.SetActive(true);
+    	}
     }
   
 }
