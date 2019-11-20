@@ -1,1 +1,1 @@
-![Class Diagram1](https://user-images.githubusercontent.com/49131712/67728641-f7728e00-f9fe-11e9-823c-4b81839540b0.jpg)
+![Последние диаграммы](https://user-images.githubusercontent.com/49131712/69283080-c7cd3500-0bfc-11ea-89ea-c39e0d67a49e.jpg)
